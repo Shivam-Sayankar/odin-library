@@ -1,6 +1,34 @@
 // console.log("hk")
 
-let library = [];
+let library = [
+    {
+        title: "Harry Potter and the Sorcerer's Stone",
+        author: "J.K. Rowling",
+        numOfPages: 104,
+        isRead: true,
+        uniqueID: 123
+    },
+    {
+        title: "Harry Potter and the Chamber of Secrets",
+        author: "J.K. Rowling",
+        numOfPages: 108,
+        isRead: true,
+        uniqueID: 124
+    },
+    {
+        title: "Harry Potter and the Prisoner of Azkaban",
+        author: "J.K. Rowling",
+        numOfPages: 108,
+        isRead: true,
+        uniqueID: 125
+    },
+    {
+        title: "Harry Potter and the Goblet of Fire",
+        author: "J.K. Rowling",
+        isRead: false,
+        uniqueID: 126
+    }
+];
 
 
 // Book constructor
