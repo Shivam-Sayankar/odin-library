@@ -54,11 +54,38 @@ console.log(tempBook)
 const addBookButton = document.querySelector("#add-book-btn")
 const dialog = document.querySelector('dialog')
 const closeDialogButton = document.querySelector("#close-dialog-btn")
+const submitButton = document.querySelector("button[type='submit']")
 
-addBookButton.addEventListener("click", (e) => {
+addBookButton.addEventListener("click", () => {
     dialog.showModal()
 })
 
 closeDialogButton.addEventListener("click", () => {
     dialog.close()
+})
+
+submitButton.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    const bookTitleInput = document.querySelector("#book-title-input")
+    const bookAuthorInput = document.querySelector("#book-author-input")
+    const bookPagesInput = document.querySelector("#book-pages-input")
+    const isBookRead = document.querySelector("#book-is-read-input")
+
+    addBookToLibrary(
+        bookTitleInput.value,
+        bookAuthorInput.value,
+        bookPagesInput.value,
+        isBookRead.checked
+    )
+
+    bookTitleInput.value = ""
+    bookAuthorInput.value = ""
+    bookPagesInput.value = ""
+    isBookRead.checked = false
+
+    dialog.close()
+
+    console.log(library)
+
 })
