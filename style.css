@@ -65,7 +65,7 @@ main {
 }
 
 .book:hover {
-  transform: scale(1.02);
+  /* transform: scale(1.02); */
   box-shadow: 0 0 14px aquamarine;
 }
 
@@ -108,6 +108,10 @@ main {
 .book-buttons {
   padding: 8px 5px;
   border-radius: 10px;
+}
+
+.book-buttons:active {
+  transform: scale(0.98);
 }
 
 .read-btn {

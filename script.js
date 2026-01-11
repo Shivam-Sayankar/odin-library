@@ -1,34 +1,6 @@
 // console.log("hk")
 
-let library = [
-    {
-        title: "Harry Potter and the Sorcerer's Stone",
-        author: "J.K. Rowling",
-        numOfPages: 104,
-        isRead: true,
-        uniqueID: 123
-    },
-    {
-        title: "Harry Potter and the Chamber of Secrets",
-        author: "J.K. Rowling",
-        numOfPages: 108,
-        isRead: true,
-        uniqueID: 124
-    },
-    {
-        title: "Harry Potter and the Prisoner of Azkaban",
-        author: "J.K. Rowling",
-        numOfPages: 108,
-        isRead: true,
-        uniqueID: 125
-    },
-    {
-        title: "Harry Potter and the Goblet of Fire",
-        author: "J.K. Rowling",
-        isRead: false,
-        uniqueID: 126
-    }
-];
+let library = [];
 
 
 // Book constructor
@@ -55,6 +27,7 @@ const addBookButton = document.querySelector("#add-book-btn")
 const dialog = document.querySelector('dialog')
 const closeDialogButton = document.querySelector("#close-dialog-btn")
 const submitButton = document.querySelector("button[type='submit']")
+const bookDisplay = document.querySelector("main")
 
 addBookButton.addEventListener("click", () => {
     dialog.showModal()
@@ -87,5 +60,23 @@ submitButton.addEventListener('click', (e) => {
     dialog.close()
 
     console.log(library)
+    renderNewBook(library[library.length - 1])
 
 })
+
+function renderNewBook(book) {
+    const newBook = document.createElement('div')
+    newBook.className = "book"
+    newBook.innerHTML = `
+        <div class="book-info">
+            <div class="book-title">${book.title}</div>
+            <div class="book-author">${book.author}</div>
+            <div class="book-pages">${book.numOfPages}</div>
+        </div> 
+        <div class="buttons">
+            <button class="book-buttons read-btn ${book.isRead ? "read" : "not-read"}">read</button>
+            <button class="delete-btn book-buttons ">remove</button>
+        </div>
+    `
+    bookDisplay.appendChild(newBook)
+}
