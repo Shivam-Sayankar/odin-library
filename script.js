@@ -12,16 +12,12 @@ function Book(title, author, numOfPages, isRead, uniqueID) {
     this.uniqueID = uniqueID;
 }
 
-function addBookToLibrary(title, author, numOfPages, isRead) {
+function addBookToLibrary(title, author, numOfPages, isRead, newUniqueID) {
 
-    const newUniqueID = crypto.randomUUID();
     const newBook = new Book(title, author, numOfPages, isRead, newUniqueID);
-
     library.push(newBook);
 }
 
-const tempBook = new Book("temp potter", "jk lol", 104, true)
-console.log(tempBook)
 
 const addBookButton = document.querySelector("#add-book-btn")
 const dialog = document.querySelector('dialog')
@@ -44,12 +40,14 @@ submitButton.addEventListener('click', (e) => {
     const bookAuthorInput = document.querySelector("#book-author-input")
     const bookPagesInput = document.querySelector("#book-pages-input")
     const isBookRead = document.querySelector("#book-is-read-input")
+    const newUniqueID = crypto.randomUUID();
 
     addBookToLibrary(
         bookTitleInput.value,
         bookAuthorInput.value,
         bookPagesInput.value,
-        isBookRead.checked
+        isBookRead.checked,
+        newUniqueID
     )
 
     bookTitleInput.value = ""
@@ -66,6 +64,7 @@ submitButton.addEventListener('click', (e) => {
 
 function renderNewBook(book) {
     const newBook = document.createElement('div')
+    newBook.setAttribute("id", book.uniqueID)
     newBook.className = "book"
     newBook.innerHTML = `
         <div class="book-info">
@@ -79,4 +78,14 @@ function renderNewBook(book) {
         </div>
     `
     bookDisplay.appendChild(newBook)
+
+    // removing
+    removeButton = newBook.querySelector(".delete-btn")
+    removeButton.addEventListener('click', (e) => {
+        const bookUniequeID = e.target.parentElement.parentElement.id
+        document.getElementById(bookUniequeID).remove()
+
+        library = library.filter(book => book.uniqueID !== bookUniequeID)
+        console.log(library)
+    })
 }
