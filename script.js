@@ -97,7 +97,8 @@ bookDisplay.addEventListener('click', (e) => {
         for (let i = 0; i < library.length; i++) {
             const currentBook = library[i]
             if (currentBook.uniqueID === bookUniequeID) {
-                library[i].isRead = !currentBook.isRead
+                currentBook.toggleReadStatus()
+                console.log(currentBook)
                 e.target.classList.toggle("book-is-read")
                 break
             }
@@ -105,3 +106,7 @@ bookDisplay.addEventListener('click', (e) => {
 
     }
 })
+
+Book.prototype.toggleReadStatus = function () {
+    this.isRead = !this.isRead
+}
