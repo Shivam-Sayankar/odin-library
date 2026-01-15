@@ -13,7 +13,6 @@ function Book(title, author, numOfPages, isRead, uniqueID) {
 }
 
 function addBookToLibrary(title, author, numOfPages, isRead, newUniqueID) {
-
     const newBook = new Book(title, author, numOfPages, isRead, newUniqueID);
     library.push(newBook);
 }
@@ -64,7 +63,7 @@ submitButton.addEventListener('click', (e) => {
 
 function renderNewBook(book) {
     const newBook = document.createElement('div')
-    newBook.setAttribute("id", book.uniqueID)
+    newBook.dataset.id = book.uniqueID
     newBook.className = "book"
     newBook.innerHTML = `
         <div class="book-info">
@@ -83,8 +82,9 @@ function renderNewBook(book) {
 //removing using delegation - event bubbling
 bookDisplay.addEventListener('click', (e) => {
     if (e.target.classList.contains("delete-btn")) {
-        const bookUniequeID = e.target.parentElement.parentElement.id
-        document.getElementById(bookUniequeID).remove()
+        const currentBook = e.target.parentElement.parentElement
+        const bookUniequeID = currentBook.dataset.id
+        currentBook.remove()
         library = library.filter(book => book.uniqueID !== bookUniequeID)
     }
 })
@@ -92,7 +92,7 @@ bookDisplay.addEventListener('click', (e) => {
 // toggling read-status
 bookDisplay.addEventListener('click', (e) => {
     if (e.target.classList.contains("read-btn")) {
-        const bookUniequeID = e.target.parentElement.parentElement.id
+        const bookUniequeID = e.target.parentElement.parentElement.dataset.id
 
         for (let i = 0; i < library.length; i++) {
             const currentBook = library[i]
