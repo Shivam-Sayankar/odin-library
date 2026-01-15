@@ -73,7 +73,7 @@ function renderNewBook(book) {
             <div class="book-pages">${book.numOfPages}</div>
         </div> 
         <div class="buttons">
-            <button class="book-buttons read-btn ${book.isRead ? "read" : "not-read"}">read</button>
+            <button class="book-buttons read-btn ${book.isRead ? "book-is-read" : ""}">read</button>
             <button class="delete-btn book-buttons">remove</button>
         </div>
     `
@@ -86,5 +86,22 @@ bookDisplay.addEventListener('click', (e) => {
         const bookUniequeID = e.target.parentElement.parentElement.id
         document.getElementById(bookUniequeID).remove()
         library = library.filter(book => book.uniqueID !== bookUniequeID)
+    }
+})
+
+// toggling read-status
+bookDisplay.addEventListener('click', (e) => {
+    if (e.target.classList.contains("read-btn")) {
+        const bookUniequeID = e.target.parentElement.parentElement.id
+
+        for (let i = 0; i < library.length; i++) {
+            const currentBook = library[i]
+            if (currentBook.uniqueID === bookUniequeID) {
+                library[i].isRead = !currentBook.isRead
+                e.target.classList.toggle("book-is-read")
+                break
+            }
+        }
+
     }
 })

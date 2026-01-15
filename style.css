@@ -58,26 +58,29 @@ main {
 }
 
 .book {
+  display: flex;
   background-color: rgb(206, 224, 206);
   border-radius: 10px;
   padding: 20px;
   color: #1d1d1d;
+  flex-direction: column;
 }
 
 .book:hover {
-  /* transform: scale(1.02); */
   box-shadow: 0 0 14px aquamarine;
 }
 
 .book-info {
+  flex-grow: 1;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   margin-bottom: 14px;
   gap: 10px;
 }
 
 .book-title {
+  flex-grow: 1;
   grid-column: 1 / 3;
   grid-row: 1 / 2;
   font-size: 1.7rem;
@@ -116,19 +119,22 @@ main {
 
 .read-btn {
   border: solid 1px #212121;
-}
-
-button.read {
-  background-color: rgba(127, 255, 212, 0.4);
-}
-
-button.not-read {
+  background-color: rgb(88, 122, 88);
   background-color: rgb(88, 122, 88);
   color: white;
 }
 
-button.not-read::before {
+.read-btn::before {
   content: "not ";
+}
+
+button.book-is-read {
+  background-color: rgba(127, 255, 212, 0.4);
+  color: black;
+}
+
+button.book-is-read::before {
+  content: "";
 }
 
 .delete-btn {
@@ -140,7 +146,6 @@ dialog {
   margin: auto;
   border: 2px solid #212121;
   border-radius: 10px;
-
   padding: 14px;
   background-color: #cee0ce;
   color: #172316;
