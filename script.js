@@ -82,7 +82,7 @@ function renderNewBook(book) {
 
 //removing using delegation - event bubbling
 bookDisplay.addEventListener('click', (e) => {
-    if (e.target.className == 'delete-btn book-buttons') {
+    if (e.target.classList.contains("delete-btn")) {
         const bookUniequeID = e.target.parentElement.parentElement.id
         document.getElementById(bookUniequeID).remove()
         library = library.filter(book => book.uniqueID !== bookUniequeID)
