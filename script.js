@@ -74,18 +74,17 @@ function renderNewBook(book) {
         </div> 
         <div class="buttons">
             <button class="book-buttons read-btn ${book.isRead ? "read" : "not-read"}">read</button>
-            <button class="delete-btn book-buttons ">remove</button>
+            <button class="delete-btn book-buttons">remove</button>
         </div>
     `
     bookDisplay.appendChild(newBook)
+}
 
-    // removing
-    removeButton = newBook.querySelector(".delete-btn")
-    removeButton.addEventListener('click', (e) => {
+//removing using delegation - event bubbling
+bookDisplay.addEventListener('click', (e) => {
+    if (e.target.className == 'delete-btn book-buttons') {
         const bookUniequeID = e.target.parentElement.parentElement.id
         document.getElementById(bookUniequeID).remove()
-
         library = library.filter(book => book.uniqueID !== bookUniequeID)
-        console.log(library)
-    })
-}
+    }
+})
