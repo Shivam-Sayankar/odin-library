@@ -58,23 +58,29 @@ submitButton.addEventListener('click', (e) => {
     const isBookRead = document.querySelector("#book-is-read-input")
     const newUniqueID = crypto.randomUUID();
 
-    addBookToLibrary(
-        bookTitleInput.value,
-        bookAuthorInput.value,
-        bookPagesInput.value,
-        isBookRead.checked,
-        newUniqueID
-    )
+    if (bookTitleInput.value !== "" && bookAuthorInput.value !== "" && bookPagesInput.value !== "") {
+        addBookToLibrary(
+            bookTitleInput.value,
+            bookAuthorInput.value,
+            bookPagesInput.value,
+            isBookRead.checked,
+            newUniqueID
+        )
 
-    bookTitleInput.value = ""
-    bookAuthorInput.value = ""
-    bookPagesInput.value = ""
-    isBookRead.checked = false
+        bookTitleInput.value = ""
+        bookAuthorInput.value = ""
+        bookPagesInput.value = ""
+        isBookRead.checked = false
 
-    dialog.close()
+        dialog.close()
 
-    console.log(library)
-    renderNewBook(library[library.length - 1])
+        console.log(library)
+        renderNewBook(library[library.length - 1])
+    }
+
+    else {
+        alert("Please fill all the entries in the form")
+    }
 
 })
 
