@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odin Library</title>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="logo">
-            <div class="logo-img">📖</div>
+            <div class="logo-img"><img src="images/logo.png" alt="Logo"></div>
             Odin Library
         </div>
         <button id="add-book-btn">Add a book</button>
@@ -18,26 +22,21 @@
 
         <dialog>
             <h2>Add a new book</h2>
+            <hr>
             <form action="" method="dialog">
-                <div class="single-input">
                     <label for="book-title-input">Title</label>
                     <input type="text" name="" id="book-title-input" required>
-                </div>
-                <div class="single-input">
                     <label for="book-author-input">Author</label>
                     <input type="text" name="" id="book-author-input">  
-                </div>
-                <div class="single-input">
                     <label for="book-pages-input">Pages</label>
                     <input type="number" min="10" id="book-pages-input" required>
-                </div>
                 <div class="single-input">
-                    <label for="book-is-read-input">read already</label>
                     <input type="checkbox" name="" id="book-is-read-input">
+                    <label for="book-is-read-input">read already</label>
                 </div>
                 
-                <button type="submit" value="">Add book</button>
-                <button id="close-dialog-btn">Close</button>
+                <button type="submit" value="" class="dialog-buttons">Add book</button>
+                <button id="close-dialog-btn" class="dialog-buttons">Close</button>
             </form>
         </dialog>
 
