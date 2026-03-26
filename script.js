@@ -9,21 +9,24 @@ const bookDisplay = document.querySelector("main")
 
 
 // Book constructor
-function Book(title, author, numOfPages, isRead, uniqueID) {
-    this.title = title;
-    this.author = author;
-    this.numOfPages = numOfPages;
-    this.isRead = isRead;
-    this.uniqueID = uniqueID;
+class Book {
+
+    constructor(title, author, numOfPages, isRead, uniqueID) {
+        this.title = title;
+        this.author = author;
+        this.numOfPages = numOfPages;
+        this.isRead = isRead;
+        this.uniqueID = uniqueID;
+    }
+
+    toggleReadStatus() {
+        this.isRead = !this.isRead
+    }
 }
 
 function addBookToLibrary(title, author, numOfPages, isRead, newUniqueID) {
     const newBook = new Book(title, author, numOfPages, isRead, newUniqueID);
     library.push(newBook);
-}
-
-Book.prototype.toggleReadStatus = function () {
-    this.isRead = !this.isRead
 }
 
 function renderNewBook(book) {
